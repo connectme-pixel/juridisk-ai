@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Juridisk Beslutsanalys - B42N</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f8f9f7;
+      color: #333;
+    }
+    
+    .container { max-width: 1000px; margin: 0 auto; background: white; min-height: 100vh; }
+    
+    .header { 
+      background: #2d5016;
+      color: white; 
+      padding: 50px 40px; 
+      text-align: center; 
+      border-bottom: 4px solid #4a7c2c;
+    }
+    .header h1 { font-size: 28px; font-weight: 600; margin-bottom: 8px; }
+    .header p { font-size: 16px; opacity: 0.95; }
+    
+    .content { padding: 40px; }
+    
+    .form-section { margin-bottom: 30px; }
+    .form-section label { 
+      display: block; 
+      font-weight: 600; 
+      margin-bottom: 12px; 
+      color: #333; 
+      font-size: 15px;
+    }
+    
+    textarea { 
+      width: 100%; 
+      min-height: 180px; 
+      padding: 15px; 
+      border: 1px solid #ddd; 
+      border-radius: 6px; 
+      font-size: 14px; 
+      font-family: inherit; 
+      resize: vertical;
+    }
+    textarea:focus { outline: none; border-color: #4a7c2c; box-shadow: 0 0 0 2px rgba(74, 124, 44, 0.1); }
+    
+    .button-group { display: flex; gap: 12px; margin-bottom: 30px; }
+    button { 
+      flex: 1; 
+      padding: 14px 24px; 
+      font-size: 15px; 
+      font-weight: 600; 
+      border: none; 
+      border-radius: 6px; 
+      cursor: pointer; 
+      transition: all 0.3s;
+    }
+    
+    .analyze-btn { 
+      background: #4a7c2c; 
+      color: white;
+    }
+    .analyze-btn:hover:not(:disabled) { 
+      background: #3a5f22; 
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(74, 124, 44, 0.25);
+    }
+    .analyze-btn:disabled { background: #ccc; cursor: not-allowed; }
+    
+    .clear-btn { 
+      background: #f0f0f0; 
+      color: #666;
+    }
+    .clear-btn:hover { background: #e0e0e0; }
+    
+    .result-box { 
+      background: #f8f9f7; 
+      padding: 30px; 
+      border-radius: 6px; 
+      border-left: 4px solid #4a7c2c;
+      display: none;
+    }
+    .result-box.error { border-left-color: #d32f2f; background: #fff5f5; }
+    .result-box.loading { border-left-color: #f57c00; background: #fff8f0; }
+    
+    .result-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    
+    .result-table th {
+      background: #2d5016;
+      color: white;
+      padding: 12px;
+      text-align: left;
+      font-weight: 600;
+    }
+    
+    .result-table td {
+      padding: 12px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .result-table tr:hover { background: #f8f9f7; }
+    
+    .status {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    
+    .status-ja { background: #c8e6c9; color: #1b5e20; }
+    .status-nej { background: #ffcdd2; color: #b71c1c; }
+    .status-delvis { background: #fff9c4; color: #f57f17; }
+    
+    .summary { 
+      background: #e8f5e9; 
+      padding: 20px; 
+      border-radius: 6px; 
+      border-left: 4px solid #4a7c2c;
+      margin-top: 30px;
+    }
+    
+    .summary h3 { color: #2d5016; margin-bottom: 12px; font-size: 16px; }
+    .summary p { line-height: 1.6; color: #333; margin-bottom: 10px; }
+    
+    .config-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #4a7c2c;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      font-size: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    
+    .config-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .config-modal.active { display: flex; }
+    
+    .config-content {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 90%;
+    }
+    
+    .config-content h2 { margin-bottom: 20px; color: #2d5016; }
+    .config-content label { display: block; margin-bottom: 8px; font-weight: 600; }
+    .config-content input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; }
+    
+    .footer { 
+      padding: 20px 40px; 
+      background: #f8f9f7; 
+      text-align: center; 
+      color: #666; 
+      font-size: 13px;
+      border-top: 1px solid #ddd;
+    }
+
+    .char-count { font-size: 12px; color: #999; margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Juridisk Beslutsanalys</h1>
+      <p>AI-driven granskning enligt LVU, SoL, LUL</p>
+    </div>
+
+    <div class="content">
+      <div class="form-section">
+        <label for="decision-text">Beslutstext</label>
+        <textarea 
+          id="decision-text" 
+          placeholder="Klistra in det beslut eller den utredning du vill analysera här..."
+        ></textarea>
+        <div class="char-count">
+          <span id="char-count">0</span> / 10,000 tecken
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button class="analyze-btn" onclick="analyzeDecision()">Analysera</button>
+        <button class="clear-btn" onclick="clearForm()">Rensa</button>
+      </div>
+
+      <div id="result" class="result-box"></div>
+    </div>
+
+    <div class="footer">
+      B.A.R.N. Juridisk Beslutsanalys | Utvecklat för ideella föreningar
+    </div>
+  </div>
+
+  <!-- Config Toggle -->
+  <button class="config-toggle" onclick="toggleConfig()">⚙️</button>
+
+  <!-- Config Modal -->
+  <div class="config-modal" id="configModal">
+    <div class="config-content">
+      <h2>Inställningar</h2>
+      <label>Google Sheet CSV-länk:</label>
+      <input 
+        type="text" 
+        id="csv-url" 
+        placeholder="https://docs.google.com/spreadsheets/d/e/..."
+        value="https://docs.google.com/spreadsheets/d/e/2PACX-1vRMz6hRqrgw-otZaUmv4qNtjqWW4OUHPNB63_iIdR1-gM4Q5EKHx9jTAYYG0SHtRIHcsbl8b3KzrQKP/pub?gid=0&single=true&output=csv"
+      />
+      <button style="background: #4a7c2c; color: white; padding: 10px 20px; border-radius: 4px; border: none; cursor: pointer; width: 100%;" onclick="toggleConfig()">Stäng</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('decision-text').addEventListener('input', function() {
+      document.getElementById('char-count').textContent = this.value.length;
+    });
+
+    function toggleConfig() {
+      document.getElementById('configModal').classList.toggle('active');
+    }
+
+    function clearForm() {
+      document.getElementById('decision-text').value = '';
+      document.getElementById('char-count').textContent = '0';
+      document.getElementById('result').style.display = 'none';
+    }
+
+    async function analyzeDecision() {
+      const csvUrl = document.getElementById('csv-url').value.trim();
+      const decisionText = document.getElementById('decision-text').value.trim();
+      const resultDiv = document.getElementById('result');
+      const analyzeBtn = document.querySelector('.analyze-btn');
+
+      if (!csvUrl || !decisionText) {
+        showResult('Fyll i beslutstexten för att analysera.', 'error');
+        return;
+      }
+
+      if (decisionText.length < 50) {
+        showResult('Texten är för kort. Vänligen klistra in ett komplett beslut (minst 50 tecken).', 'error');
+        return;
+      }
+
+      showResult('Analyserar beslut...', 'loading');
+      analyzeBtn.disabled = true;
+
+      try {
+        const resp = await fetch('/analyze', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ csvUrl, decisionText })
+        });
+
+        if (!resp.ok) {
+          let err;
+          try { err = await resp.json(); } catch(e){ err = await resp.text(); }
+          throw new Error(err?.error || err || 'Fel vid kommunikation med servern.');
+        }
+
+        const data = await resp.json();
+        const analysis = data.result || 'Ingen analys mottagen från servern.';
+        showResult(analysis, 'success');
+
+      } catch (error) {
+        showResult(`Fel: ${error.message}`, 'error');
+      } finally {
+        analyzeBtn.disabled = false;
+      }
+    }
+
+    function showResult(text, type) {
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = text;
+      resultDiv.className = 'result-box ' + type;
+      resultDiv.style.display = 'block';
+      resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
+</body>
+</html>

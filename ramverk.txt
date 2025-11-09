@@ -1,0 +1,109 @@
+Ramverk för prövning av beslut som rör barn (LVU)
+Instruktion: För varje ärende: gå punkt för punkt. Markera Ja / Nej / Delvis och anteckna kort kommentar. För varje kriterium - JÄMFÖR MED PRAXIS (från Google Sheet, som du har tillgång till): a) Sök i Google Sheet:en efter fall där liknande situation bedömdes b) Ange hur beslutet förhåller sig till praxisfallet c) Om beslutet BRISTER: referera till fall där myndighet/domstol kritiserades d) Om beslutet är BRA: referera till fall där liknande resonemang godkändes. Inkludera praxisjämförelsen i din motivering för varje kriterium. 
+
+1) Kriterium: Rättssäkerhet och objektivitet
+Lagrum: Regeringsformen (1974:152) 1 kap. 9 §; Förvaltningslagen (2017:900) 5 §.
+Kontrollfrågor (från B.A.R.N.-checklistan och praxis):
+    1. Är utredningen saklig och fri från subjektiva värderingar? (B.A.R.N., 2025).
+    2. Är fakta, bedömningar och slutsatser tydligt åtskilda i dokumentationen? (B.A.R.N., 2025).
+    3. Har barnet och vårdnadshavare fått möjlighet att yttra sig innan beslut? (B.A.R.N., 2025; JO, 2014/15).
+    4. Har utredaren redovisat metod, källor och sin kompetens i utredningen? (B.A.R.N., 2025; JO, 2005/06).
+Syfte: Säkerställa att beslutsunderlaget är sakligt, transparent och rättssäkert i enlighet med RF 1:9 och FL 5 § (B.A.R.N., 2025; JO, 2005/06).
+
+2) Kriterium: Laglighet (rättslig grund)
+Lagrum: LVU (1990:52) 1–3 §§; Socialtjänstlagen (2001:453) 1 kap. 2 §; Regeringsformen (1974:152) 1 kap. 1 §; Europakonventionen (EKMR) art. 8.
+Kontrollfrågor (från B.A.R.N.-checklistan och praxis):
+    1. Är beslutet uttryckligen grundat på LVU och är rekvisiten (t.ex. beteende- eller miljörekvisit) prövade och dokumenterade? (B.A.R.N., 2025).
+    2. Är varje åtgärd motiverad med hänvisning till aktuell paragraf i lagtexten? (B.A.R.N., 2025; JO, 2014/15).
+    3. Har hänsyn tagits till rätten till familjeliv (EKMR art. 8) i motiveringen? (ECHR praxis; Kutzner v. Germany).
+Syfte: Säkerställa att åtgärder endast vidtas på laglig grund och inom myndighetens befogenheter (LVU 1–3 §§; Prop. 1979/80:1).
+
+3) Kriterium: Proportionalitet och nödvändighet
+Lagrum: Förvaltningslagen (2017:900) 5 §; Europakonventionen art. 8; Högsta förvaltningsdomstolen HFD 2019 ref. 56.
+Kontrollfrågor (från B.A.R.N.-checklistan och praxis):
+    1. Finns dokumentation som visar att mindre ingripande åtgärder prövats innan tvång föreslogs? (B.A.R.N., 2025; HFD 2019 ref. 56).
+    2. Har intrångets omfattning och tid begränsats och motiverats i förhållande till skyddsbehovet? (HFD 2019 ref. 56).
+    3. Är det tydligt hur intrånget i familjelivet vägt mot skyddsbehovet? (ECHR praxis; Kutzner v. Germany).
+Syfte: Säkerställa att tvångsåtgärder bara används när de är proportionerliga och nödvändiga för att skydda barnet (FL 5 §; HFD 2019 ref. 56).
+
+4) Kriterium: Barnets bästa och barns delaktighet
+Lagrum: Barnkonventionen (2018:1197) art. 3 och 12; LVU 1 §; UN CRC General Comment No. 14 (2013).
+Kontrollfrågor (från B.A.R.N.-checklistan och praxis):
+    1. Har barnets bästa identifierats och konkretiserats i utredningen? (B.A.R.N., 2025; CRC GC No. 14).
+    2. Har barnet fått möjlighet att uttrycka sin mening på ett åldersanpassat sätt och är detta dokumenterat? (B.A.R.N., 2025; Barnkonventionen art. 12).
+    3. Har analys gjorts av konsekvenser för barnets utveckling, trygghet och hälsa? (B.A.R.N., 2025).
+Syfte: Säkerställa att barnets bästa är en central, dokumenterad övervägning i varje beslut (Barnkonventionen art. 3; LVU 1 §).
+
+5) Kriterium: Frivillighet och minst ingripande åtgärd (yttersta åtgärd)
+Lagrum: LVU 1 §; Socialtjänstlagen (2001:453) 1 kap. 1–2 §§; HFD 2012 ref. 69.
+Kontrollfrågor (från B.A.R.N.-checklistan och praxis):
+    1. Har frivilliga insatser enligt SoL erbjudits och dokumenterats innan tvångsbeslut? (B.A.R.N., 2025; HFD 2012 ref. 69).
+    2. Är skälen till att frivilliga insatser bedömts otillräckliga tydligt redovisade? (JO-praxis; HFD 2012 ref. 69).
+    3. Finns alternativa stödformer (stöd i hemmet, nätverk, familjeinsatser) utredda? (B.A.R.N., 2025).
+Syfte: Säkerställa att tvång endast används som sista utväg, i enlighet med LVU 1 § och Socialstyrelsens vägledning om att tvång är ett yttersta alternativ (LVU-handbok).
+
+6) Kriterium: Riskbedömning och omedelbarhet (vid omhändertagande)
+Lagrum: LVU 6 § (omedelbart omhändertagande); LVU 1–2 §§; EKMR art. 8; HFD 2019 ref. 56.
+Kontrollfrågor (från B.A.R.N.-checklistan och praxis):
+    1. Är risken konkret, aktuell och verifierad genom underlag (t.ex. medicinska rapporter, polisrapporter, observationer)? (B.A.R.N., 2025; JO 2014/15; HFD 2019 ref. 56).
+    2. Har vårdnadshavarens förmåga att skydda barnet bedömts och dokumenterats? (B.A.R.N., 2025).
+    3. Är omedelbart omhändertagande nödvändigt vid tidpunkten (saknas rimliga andra alternativ och finns bevis för akut fara)? (LVU 6 §; HFD 2019 ref. 56).
+Syfte: Säkerställa att omedelbart omhändertagande endast beslutas vid verklig akut och verifierbar risk och att proportionalitets- och nödvändighetskraven är uppfyllda (LVU 6 §; HFD 2019 ref. 56).
+
+Lagtexter och författningar
+Regeringsformen (1974:152). Hämtad från Riksdagen: https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/kungorelse-1974152-om-beslutad-ny-regeringsform_sfs-1974-152/
+Förvaltningslagen (2017:900). Hämtad från Riksdagen: https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forvaltningslag-2017900_sfs-2017-900/
+Lag (1990:52) med särskilda bestämmelser om vård av unga (LVU). Hämtad från Riksdagen: https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/lag-199052-med-sarskilda-bestammelser-om-vard_sfs-1990-52/
+Socialtjänstlagen (2001:453). Hämtad från Riksdagen: https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/socialtjanstlag-2001453_sfs-2001-453/
+Europakonventionen om de mänskliga rättigheterna (EKMR). Se artikel 8 om familjeliv: https://www.echr.coe.int/Documents/Convention_SWE.pdf
+Internationell och UN-praxis
+United Nations Committee on the Rights of the Child. (2013). General comment No. 14: On the right of the child to have his or her best interests taken as a primary consideration (art. 3, para. 1). Hämtad från Refworld: https://www.refworld.org/legal/general/crc/2013/en/95780
+Svensk praxis och doktrin
+Högsta förvaltningsdomstolen. (2019). HFD 2019 ref. 56 (referat). https://www.domstol.se/globalassets/filer/domstol/hogstaforvaltningsdomstolen/2019/referat/hfd-2019-ref.-56.pdf
+Högsta förvaltningsdomstolen. (2012). HFD 2012 ref. 69 (referat). (Sök på HFD:s webb eller rättsdatabaser; exempel-PDF): https://www4.skatteverket.se/download/18.7b6a9c631958b000a1cb892/1744701358050/HFD%2B2012%2Bref.%2B69.pdf
+Proposition 1979/80:1 (förarbeten som berör LVU). Hämtad från Riksdagen: https://data.riksdagen.se/fil/A3CF80E6-E66E-4385-8BFE-9116E8BBF223
+JO och vägledande uttalanden
+Justitieombudsmannen (JO) — sökfunktion för beslut och ambetsberättelser: https://www.jo.se/jo-beslut/sokresultat/
+(Se särskilda JO-beslut som nämnts i ramverket, t.ex. beslut publicerade i JO-ambetsberättelser 2005/06; 2007/08; 2014/15 — använd JO:s sök för direktlänkar till enstaka beslut.)
+Handböcker och checklistor
+Socialstyrelsen. LVU – handbok för socialtjänsten (se avsnitt om att tvång är yttersta åtgärd). Socialstyrelsen: https://www.socialstyrelsen.se (sök “LVU handbok”)
+Barnahus / kvalitetsstandarder (informativ ingång): https://www.barnahus.se/
+B.A.R.N. (2025). 
+
+
+Analysen/Svaret
+🔹 Gemini-instruktion för beslutsanalys
+Syfte:
+Analysera ett beslut eller en utredning som rör barn enligt LVU, SoL eller annan relevant lagstiftning, med stöd i ramverket för rättssäker bedömning.
+
+Steg 1. Jämför beslutet mot ramverkets kriterier
+För varje kriterium i ramverket ska du:
+    1. Identifiera om beslutet uppfyller kravet (JA / NEJ / DELVIS).
+    2. Ange stödjande text från beslutet (kort citat eller referens till stycke).
+    3. Ge en kort motivering.
+    4. Ange relevant lagrum och rättskälla (hämtad ur databasen).
+Presentera resultatet i en tabell med följande kolumner:
+| Kriterium | Uppfyllt (Ja/Nej/Delvis) | Stöd i beslutet | Motivering | Lagrum / Referens (med länk till rättskälla) |
+
+Steg 2. Sammanfattning och juridisk bedömning
+Sammanfatta analysen kortfattat:
+    • Beskriv övergripande om beslutet är rättssäkert enligt ramverkets kriterier.
+    • Ange vilka kriterier som brister och varför.
+    • Gör en samlad bedömning av om beslutet strider mot Europakonventionen (EKMR) eller Barnkonventionen (BK), med hänvisning till relevanta artiklar och praxis (från databasen).
+Presentera resultatet i textform enligt följande struktur:
+    1. Samlad bedömning: (kort text)
+    2. Eventuell konventionskonflikt: (ange artikelnummer och praxis, t.ex. ”Artikel 8 EKMR, Kutzner v. Germany (2002)”)
+    3. Rekommendation: (t.ex. ”Utredningen bör kompletteras avseende proportionalitet och barnets delaktighet.”)
+
+Steg 3. Källhänvisningar
+Lista de rättskällor som använts (titel, årtal, länk om tillgänglig).
+
+🔹 Kommentar till implementationen
+När du kör detta i Gemini eller annan modell:
+    • ramverk.txt ska laddas som referensdokument (systemprompt).
+    • Din databas (CSV/SQL) ska innehålla:
+        ◦ Lagrum (LVU, SoL, RF, EKMR, BK, JO, praxis, SoS m.fl.)
+        ◦ Typ av källa (lag, praxis, myndighet)
+        ◦ Kort sammanfattning
+        ◦ URL till originaltexten
+Systemet jämför sedan beslutet mot ramverket, hämtar relevanta rättskällor från databasen, och genererar tabellen + sammanfattningen.
