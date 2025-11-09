@@ -217,33 +217,13 @@
     </div>
   </div>
 
-  <!-- Config Toggle -->
-  <button class="config-toggle" onclick="toggleConfig()">⚙️</button>
-
-  <!-- Config Modal -->
-  <div class="config-modal" id="configModal">
-    <div class="config-content">
-      <h2>Inställningar</h2>
-      <label>Google Sheet CSV-länk:</label>
-      <input 
-        type="text" 
-        id="csv-url" 
-        placeholder="https://docs.google.com/spreadsheets/d/e/..."
-        value="https://docs.google.com/spreadsheets/d/e/2PACX-1vRMz6hRqrgw-otZaUmv4qNtjqWW4OUHPNB63_iIdR1-gM4Q5EKHx9jTAYYG0SHtRIHcsbl8b3KzrQKP/pub?gid=0&single=true&output=csv"
-      />
-      <button style="background: #4a7c2c; color: white; padding: 10px 20px; border-radius: 4px; border: none; cursor: pointer; width: 100%;" onclick="toggleConfig()">Stäng</button>
-    </div>
-  </div>
-
+ 
   <script>
     document.getElementById('decision-text').addEventListener('input', function() {
       document.getElementById('char-count').textContent = this.value.length;
     });
 
-    function toggleConfig() {
-      document.getElementById('configModal').classList.toggle('active');
-    }
-
+  
     function clearForm() {
       document.getElementById('decision-text').value = '';
       document.getElementById('char-count').textContent = '0';
