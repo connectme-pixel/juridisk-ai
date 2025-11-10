@@ -1,6 +1,6 @@
 import express from "express";
 import fetch from "node-fetch";
-import fs from "fs";
+// import fs from "fs"; // <-- BORTTAGEN: Inte längre nödvändig
 import path from "path";
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
@@ -13,18 +13,21 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Läs in ramverket
-const ramverkText = fs.readFileSync(
-  path.join(__dirname, "ramverk.txt"),
-  "utf-8"
-);
+// ==========================================================
+// ✅ STEG 1: HÅRDDKODA RAMVERKET DIREKT I KODEN
+// Vi tar bort filhantering för att undvika problem med "ramverk.txt" på Render.
+// ==========================================================
+const RAMVERK_TEXT = `Ramverk för prövning av beslut som rör barn (LVU)
+Instruktion: För varje ärende: gå punkt för punkt. Markera Ja / Nej / Delvis och anteckna kort kommentar. För varje kriterium - JÄMFÖR MED PRAXIS (från Google sheet, som du har tillgång till): a) Sök i Google Sheet:en efter fall där liknande situation bedömdes b) Ange hur beslutet förhåller sig till praxisfallet c) Om beslutet BRISTER: referera till fall där myndighet/domstol kritiserades d) Om beslutet är BRA: referera till fall där liknande resonemang godkännes. Inkludera praxisjämförelsen i din motivering för varje kriterium.
+`; // Notera: Din text från ramverk.txt slutar här.
 
 // Mellanlager
 app.use(express.json());
 app.use(express.static(__dirname));
 
-// ✅ Din Gemini API-nyckel här (lägg till i .env i framtiden)
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "AIzaSyAOuRquGjmSIENTHks8E6e2TauGcbtaQwc";
+// ✅ STEG 2: ANVÄND DIN NYA, FUNGERANDE NYCKEL SOM FALLBACK
+// Om process.env.GEMINI_API_KEY är odefinierad (t.ex. vid lokal körning), används denna.
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "AIzaSyAqIlN9fXyfrTw_iwvbVPAw8oduzVseeGs";
 
 // ✅ Huvudsida
 app.get("/", (req, res) => {
@@ -33,6 +36,7 @@ app.get("/", (req, res) => {
 
 // ✅ Analysera beslut
 app.post("/analyze", async (req, res) => {
+  console.log("🔹 /analyze-anrop mottaget", new Date().toISOString());
   try {
     const { csvUrl, decisionText } = req.body;
     if (!csvUrl || !decisionText) {
@@ -46,11 +50,11 @@ app.post("/analyze", async (req, res) => {
     }
     const csvText = await csvResponse.text();
 
-    // 2. Förbered prompt med ramverket
+    // 2. Förbered prompt med det hårdkodade ramverket (RAMVERK_TEXT)
     const prompt = `Du är en juridisk expert som analyserar beslut om barn enligt det ramverk som tillhandahölls.
 
 RAMVERK FÖR PRÖVNING:
-${ramverkText}
+${RAMVERK_TEXT}
 
 JURIDISKA KÄLLOR (från databas):
 ${csvText}
@@ -110,9 +114,11 @@ VIKTIGT:
 - Bara det väsentligaste, inget onödigt
 - För beslutsfattare som behöver snabb överblick`;
 
-    // 3. Skicka till Gemini API
+
+    // 3️⃣ Skicka till Gemini API
     const geminiResponse = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${GEMINI_API_KEY}`,
+      // VIKTIGT: ANVÄND DEN NYA NYCKELN HÄR
+      `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -123,9 +129,22 @@ VIKTIGT:
       }
     );
 
+    // ✅ Först hämta svaret
     const geminiData = await geminiResponse.json();
-    const text = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || "Inget svar från Gemini";
+
+    // 🪵 Sedan logga hela svaret för felsökning
+    console.log("🔍 Gemini response full data:", JSON.stringify(geminiData, null, 2));
+
+    // ✅ Hämta text från svaret (eller felmeddelande)
+    const text =
+      geminiData.candidates?.[0]?.content?.parts?.[0]?.text ||
+      geminiData.error?.message ||
+      "Inget svar från Gemini";
+
+    // ✅ Skicka svaret tillbaka till frontend
     res.json({ result: text });
+
+
   } catch (err) {
     console.error("Fel i /analyze:", err);
     res.status(500).json({ error: err.message });

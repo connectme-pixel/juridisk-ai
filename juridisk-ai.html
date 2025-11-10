@@ -210,7 +210,7 @@
       analyzeBtn.disabled = true;
 
       try {
-        const resp = await fetch('/analyze', {
+        const resp = await fetch('https://juridisk-ai.onrender.com/analyze', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ csvUrl, decisionText })
