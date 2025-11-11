@@ -135,19 +135,24 @@ VIKTIGT:
     // 🪵 Sedan logga hela svaret för felsökning
     console.log("🔍 Gemini response full data:", JSON.stringify(geminiData, null, 2));
 
-    // ✅ Hämta text från svaret (eller felmeddelande)
- if (geminiData.error) {
-    text = `API-fel: ${geminiData.error.message}`;
-} else if (geminiData.candidates && geminiData.candidates.length > 0) {
-    // Försök att hämta texten. Om den är tom, säg det
-    const responseText = geminiData.candidates[0].content.parts?.[0]?.text;
-    if (responseText) {
-        text = responseText;
+// ✅ Hämta text från svaret (eller felmeddelande)
+    let text; // Deklarera 'text' utan ett värde så den kan användas i blocken nedan
+
+    if (geminiData.error) {
+        text = `API-fel: ${geminiData.error.message}`;
+    } else if (geminiData.candidates && geminiData.candidates.length > 0) {
+        // Försök att hämta texten. Om den är tom, säg det
+        const responseText = geminiData.candidates[0].content.parts?.[0]?.text;
+        if (responseText) {
+            text = responseText;
+        } else {
+            // Om Gemini svarade men texten var tom (t.ex. p.g.a. finishReason)
+            text = "Genereringen slutfördes, men ingen text returnerades. Försök med en längre beslutstext eller justera tokens (Finish Reason: " + geminiData.candidates[0].finishReason + ")";
+        }
     } else {
-        // Om Gemini svarade men texten var tom (t.ex. p.g.a. finishReason)
-        text = "Genereringen slutfördes, men ingen text returnerades. Försök med en längre beslutstext eller justera tokens (Finish Reason: " + geminiData.candidates[0].finishReason + ")";
+        // Fallback om inga fel eller kandidater hittades
+        text = "Ett oväntat fel uppstod vid Gemini-anropet.";
     }
-}
 
     // ✅ Skicka svaret tillbaka till frontend
     res.json({ result: text });
