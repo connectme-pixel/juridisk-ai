@@ -136,10 +136,18 @@ VIKTIGT:
     console.log("🔍 Gemini response full data:", JSON.stringify(geminiData, null, 2));
 
     // ✅ Hämta text från svaret (eller felmeddelande)
-    const text =
-      geminiData.candidates?.[0]?.content?.parts?.[0]?.text ||
-      geminiData.error?.message ||
-      "Inget svar från Gemini";
+ if (geminiData.error) {
+    text = `API-fel: ${geminiData.error.message}`;
+} else if (geminiData.candidates && geminiData.candidates.length > 0) {
+    // Försök att hämta texten. Om den är tom, säg det
+    const responseText = geminiData.candidates[0].content.parts?.[0]?.text;
+    if (responseText) {
+        text = responseText;
+    } else {
+        // Om Gemini svarade men texten var tom (t.ex. p.g.a. finishReason)
+        text = "Genereringen slutfördes, men ingen text returnerades. Försök med en längre beslutstext eller justera tokens (Finish Reason: " + geminiData.candidates[0].finishReason + ")";
+    }
+}
 
     // ✅ Skicka svaret tillbaka till frontend
     res.json({ result: text });
